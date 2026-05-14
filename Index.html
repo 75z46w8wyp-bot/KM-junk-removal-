@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K&M Junk Removal – Fast, Reliable, Affordable</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #4CAF1A;
+    --green-dark: #2d7a0d;
+    --green-glow: #6ed62a;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #181818;
+    --white: #ffffff;
+    --gray: #999;
+    --light-gray: #f5f5f5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 70px;
+    background: rgba(10,10,10,0.95);
+    border-bottom: 2px solid var(--green);
+    backdrop-filter: blur(10px);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 2px; color: var(--white);
+  }
+  .nav-logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--white); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green); color: var(--black) !important;
+    padding: 10px 22px; border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif !important;
+    font-weight: 800 !important; font-size: 14px !important;
+    letter-spacing: 1.5px; text-transform: uppercase !important;
+    transition: background .2s, transform .15s !important;
+  }
+  .nav-cta:hover { background: var(--green-glow) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #0a0a0a 45%, #0f1a0a 100%);
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(76,175,26,0.07) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(76,175,26,0.04) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(76,175,26,0.04) 40px);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 650px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(76,175,26,0.15); border: 1px solid rgba(76,175,26,0.4);
+    padding: 6px 16px; border-radius: 2px; margin-bottom: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--green);
+  }
+  .hero-badge::before { content: '●'; font-size: 8px; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+  .hero-h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    line-height: .9; letter-spacing: 2px;
+    color: var(--white);
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+    margin-bottom: 8px;
+  }
+  .hero-h1 .amp { color: var(--green); }
+  .hero-sub {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: 6px; color: var(--green);
+    margin-bottom: 28px;
+  }
+  .hero-tagline {
+    font-size: 17px; color: #ccc; line-height: 1.6;
+    margin-bottom: 16px; font-weight: 500;
+  }
+  .hero-checks {
+    display: flex; gap: 24px; margin-bottom: 40px; flex-wrap: wrap;
+  }
+  .check-item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--white);
+  }
+  .check-item .icon { color: var(--green); font-size: 20px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green); color: var(--black);
+    padding: 16px 36px; border: none; border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(76,175,26,0.35);
+  }
+  .btn-primary:hover {
+    background: var(--green-glow); transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(76,175,26,0.5);
+  }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 16px 36px; border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+  /* scratch texture overlay on hero text */
+  .scratch {
+    position: absolute; top: 0; right: -20px; bottom: 0;
+    width: 55%; opacity: .04;
+    background: repeating-linear-gradient(-45deg, #fff, #fff 1px, transparent 1px, transparent 8px);
+    pointer-events: none;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--green); padding: 20px 60px;
+    display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px; color: var(--black); line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(0,0,0,0.7);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 60px; }
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--green);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    letter-spacing: 2px; color: var(--white);
+    line-height: 1; margin-bottom: 20px;
+  }
+  .section-body {
+    font-size: 16px; color: var(--gray);
+    line-height: 1.8; max-width: 520px;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--dark); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px; margin-top: 60px;
+  }
+  .service-card {
+    background: var(--card); padding: 40px 32px;
+    border-top: 3px solid transparent;
+    transition: border-color .2s, transform .2s;
+    cursor: default;
+  }
+  .service-card:hover { border-color: var(--green); transform: translateY(-4px); }
+  .service-icon {
+    font-size: 40px; margin-bottom: 20px; display: block;
+  }
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 1px; color: var(--white);
+    margin-bottom: 12px;
+  }
+  .service-desc { font-size: 15px; color: var(--gray); line-height: 1.7; }
+
+  /* ── HOW IT WORKS ── */
+  #how { background: var(--black); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-top: 60px; }
+  .step { position: relative; padding-left: 24px; }
+  .step::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 3px; background: rgba(76,175,26,0.3);
+  }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; color: rgba(76,175,26,0.15);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px; font-weight: 800; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 10px;
+  }
+  .step-desc { font-size: 15px; color: var(--gray); line-height: 1.7; }
+
+  /* ── QUOTE / CONTACT ── */
+  #quote { background: var(--dark); }
+  .quote-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .quote-info h2 { margin-bottom: 24px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .contact-icon {
+    width: 48px; height: 48px; background: rgba(76,175,26,0.15);
+    border: 1px solid rgba(76,175,26,0.4); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .contact-text a, .contact-text span {
+    display: block; font-size: 16px; color: var(--white);
+    font-weight: 600; text-decoration: none;
+  }
+  .contact-text small { font-size: 13px; color: var(--gray); }
+
+  /* FORM */
+  .quote-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--green);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3px; padding: 14px 16px;
+    color: var(--white); font-family: 'Barlow', sans-serif;
+    font-size: 15px; outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--green); }
+  .form-group select option { background: #222; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  /* CALENDAR */
+  .calendar-wrap { margin-top: 8px; }
+  .cal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-bottom: none; border-radius: 3px 3px 0 0;
+  }
+  .cal-month {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--white);
+  }
+  .cal-nav {
+    background: none; border: none; color: var(--green);
+    font-size: 18px; cursor: pointer; padding: 4px 8px;
+    transition: color .2s;
+  }
+  .cal-nav:hover { color: var(--green-glow); }
+  .cal-grid {
+    display: grid; grid-template-columns: repeat(7,1fr);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 0 0 3px 3px; overflow: hidden;
+  }
+  .cal-day-name {
+    text-align: center; padding: 10px 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--gray);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .cal-day {
+    text-align: center; padding: 10px 4px;
+    font-size: 14px; color: var(--white);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background .15s, color .15s;
+  }
+  .cal-day:hover:not(.empty):not(.past) { background: rgba(76,175,26,0.2); color: var(--green); }
+  .cal-day.selected { background: var(--green) !important; color: var(--black) !important; font-weight: 700; }
+  .cal-day.today { border-color: rgba(76,175,26,0.5); color: var(--green); }
+  .cal-day.empty, .cal-day.past { color: rgba(255,255,255,0.15); cursor: default; }
+  .selected-date-display {
+    margin-top: 10px; padding: 10px 16px;
+    background: rgba(76,175,26,0.1); border: 1px solid rgba(76,175,26,0.3);
+    border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 600; color: var(--green);
+    display: none;
+  }
+
+  .submit-btn {
+    width: 100%; background: var(--green); color: var(--black);
+    padding: 18px; border: none; border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase; cursor: pointer;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(76,175,26,0.3);
+    margin-top: 8px;
+  }
+  .submit-btn:hover {
+    background: var(--green-glow); transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(76,175,26,0.5);
+  }
+
+  /* SUCCESS */
+  .success-msg {
+    display: none; padding: 20px; border-radius: 3px;
+    background: rgba(76,175,26,0.15); border: 1px solid var(--green);
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; letter-spacing: 1px; color: var(--green);
+  }
+
+  /* ── WHY US ── */
+  #why { background: var(--black); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 32px; margin-top: 60px; }
+  .why-card {
+    padding: 32px 28px; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px; transition: border-color .2s, box-shadow .2s;
+  }
+  .why-card:hover { border-color: rgba(76,175,26,0.4); box-shadow: 0 0 30px rgba(76,175,26,0.07); }
+  .why-icon { font-size: 36px; margin-bottom: 16px; }
+  .why-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 800; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--white); margin-bottom: 10px;
+  }
+  .why-desc { font-size: 14px; color: var(--gray); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505; border-top: 2px solid rgba(76,175,26,0.3);
+    padding: 60px; text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; letter-spacing: 3px; color: var(--white);
+    margin-bottom: 8px;
+  }
+  .footer-logo span { color: var(--green); }
+  .footer-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 32px;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gray); text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--green); }
+  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.25); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section, #hero { padding: 80px 24px; }
+    .stats-bar { padding: 20px 24px; gap: 32px; }
+    .quote-wrap { grid-template-columns: 1fr; gap: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 48px 24px; }
+  }
+
+  /* Divider stripe */
+  .stripe {
+    height: 4px;
+    background: linear-gradient(90deg, var(--green-dark), var(--green), var(--green-glow), var(--green), var(--green-dark));
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">K<span>&</span>M JUNK REMOVAL</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#quote" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Now Serving Your Area</div>
+    <h1 class="hero-h1">K<span class="amp">&</span>M</h1>
+    <div class="hero-sub">Junk Removal</div>
+    <p class="hero-tagline">We haul it all — you relax, we handle the rest.</p>
+    <div class="hero-checks">
+      <div class="check-item"><span class="icon">✔</span> Fast</div>
+      <div class="check-item"><span class="icon">✔</span> Reliable</div>
+      <div class="check-item"><span class="icon">✔</span> Affordable</div>
+    </div>
+    <div class="hero-btns">
+      <a href="#quote" class="btn-primary">Get a Free Quote</a>
+      <a href="tel:9524840826" class="btn-secondary">📞 Call Now</a>
+    </div>
+  </div>
+  <div class="scratch"></div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">24hr</div><div class="stat-label">Same-Day Service</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Satisfaction Rate</div></div>
+  <div class="stat-item"><div class="stat-num">ANY</div><div class="stat-label">Size Load</div></div>
+  <div class="stat-item"><div class="stat-num">FREE</div><div class="stat-label">No-Obligation Quote</div></div>
+</div>
+
+<div class="stripe"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Remove</div>
+  <h2 class="section-title">We Haul It All</h2>
+  <p class="section-body">No job too big, no job too small. If you need it gone, we'll make it happen — fast and hassle-free.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🛋️</span>
+      <div class="service-name">Furniture & Appliances</div>
+      <p class="service-desc">Sofas, mattresses, fridges, washers, dryers — we remove and dispose of them responsibly.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏚️</span>
+      <div class="service-name">Cleanouts</div>
+      <p class="service-desc">Estate, garage, basement, attic, and full-home cleanouts done efficiently and thoroughly.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏗️</span>
+      <div class="service-name">Construction Debris</div>
+      <p class="service-desc">Drywall, lumber, concrete, tiles, and renovation waste hauled away quickly.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌿</span>
+      <div class="service-name">Yard Waste</div>
+      <p class="service-desc">Branches, brush, leaves, soil, and outdoor junk cleared so your yard looks great again.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🖥️</span>
+      <div class="service-name">Electronics</div>
+      <p class="service-desc">TVs, computers, printers, and e-waste removed and recycled the right way.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">♻️</span>
+      <div class="service-name">General Junk</div>
+      <p class="service-desc">Boxes, clothing, toys, tools, and anything else cluttering your space — gone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-label">Simple Process</div>
+  <h2 class="section-title">How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Get a Free Quote</div>
+      <p class="step-desc">Fill out our form or call us directly. We'll provide a no-obligation quote fast — often same day.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Book a Time</div>
+      <p class="step-desc">Pick a date and time that works for you using our easy online booking calendar.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">We Show Up</div>
+      <p class="step-desc">Our crew arrives on time, ready to haul. We'll do all the heavy lifting — you don't lift a finger.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Enjoy the Space</div>
+      <p class="step-desc">Junk gone. Space reclaimed. We clean up before we leave so it's spotless.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote">
+  <div class="quote-wrap">
+    <div class="quote-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">Get Your Free Quote</h2>
+      <p class="section-body" style="margin-bottom:40px;">Ready to clear the clutter? Reach out now and we'll get back to you with a fast, honest, no-obligation quote.</p>
+
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div class="contact-text">
+          <a href="tel:9524840826">(952) 484-0826</a>
+          <small>Call or text anytime</small>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          <a href="mailto:KMjunkkkremoval@gmail.com">KMjunkkkremoval@gmail.com</a>
+          <small>We reply fast</small>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">♻️</div>
+        <div class="contact-text">
+          <span>Eco-Friendly Disposal</span>
+          <small>We donate & recycle when possible</small>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="quote-form" id="quoteForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="firstName" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="lastName" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="(555) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="you@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Address</label>
+          <input type="text" id="address" placeholder="123 Main St, City, MN" required>
+        </div>
+        <div class="form-group">
+          <label>Type of Junk</label>
+          <select id="junkType">
+            <option value="">Select a category…</option>
+            <option>Furniture & Appliances</option>
+            <option>Estate / Garage Cleanout</option>
+            <option>Construction Debris</option>
+            <option>Yard Waste</option>
+            <option>Electronics</option>
+            <option>General Junk / Mixed Load</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Pickup Date</label>
+          <div class="calendar-wrap">
+            <div class="cal-header">
+              <button class="cal-nav" id="prevMonth">&#8249;</button>
+              <div class="cal-month" id="calMonth"></div>
+              <button class="cal-nav" id="nextMonth">&#8250;</button>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <input type="hidden" id="selectedDate">
+            <div class="selected-date-display" id="selectedDateDisplay">📅 Selected: <span id="selectedDateText"></span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message / Details</label>
+          <textarea id="message" placeholder="Describe what needs to be removed, approximate load size, special access notes, etc."></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitQuote()">🚛 Send My Free Quote Request</button>
+      </div>
+      <div class="success-msg" id="successMsg">
+        ✅ Quote Request Sent!<br>
+        <small style="font-size:15px;font-weight:400;color:#bbb;display:block;margin-top:8px;">We'll reach out within a few hours. Thanks for choosing K&M Junk Removal!</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-label">Our Promise</div>
+  <h2 class="section-title">Why Choose K&M?</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <div class="why-title">Same-Day Available</div>
+      <p class="why-desc">Need it gone today? We offer same-day and next-day pickups whenever possible.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Upfront Pricing</div>
+      <p class="why-desc">No hidden fees, no surprises. We give you a clear price before we start — always.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💪</div>
+      <div class="why-title">We Do the Heavy Lifting</div>
+      <p class="why-desc">Don't move a thing. Our team handles all loading, hauling, and cleanup for you.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">♻️</div>
+      <div class="why-title">Eco Responsible</div>
+      <p class="why-desc">We donate usable items and recycle whenever possible — keeping junk out of landfills.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <div class="why-title">Locally Owned</div>
+      <p class="why-desc">K&M is a local business — not a franchise. You get personal, attentive service every time.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⭐</div>
+      <div class="why-title">Satisfaction Guaranteed</div>
+      <p class="why-desc">We're not done until you're happy. Your satisfaction is what drives everything we do.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="stripe"></div>
+<footer>
+  <div class="footer-logo">K<span>&</span>M</div>
+  <div class="footer-tagline">Junk Removal — Fast · Reliable · Affordable</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#why">Why Us</a>
+    <a href="#quote">Free Quote</a>
+    <a href="tel:9524840826">(952) 484-0826</a>
+    <a href="mailto:KMjunkkkremoval@gmail.com">KMjunkkkremoval@gmail.com</a>
+  </div>
+  <div class="footer-copy">© 2026 K&M Junk Removal. All rights reserved.</div>
+</footer>
+
+<script>
+// ── CALENDAR ──
+const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+let today = new Date();
+let curYear = today.getFullYear();
+let curMonth = today.getMonth();
+let selectedDay = null;
+
+function buildCalendar() {
+  document.getElementById('calMonth').textContent = months[curMonth] + ' ' + curYear;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  // headers
+  days.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-day-name'; el.textContent = d;
+    grid.appendChild(el);
+  });
+  const firstDay = new Date(curYear, curMonth, 1).getDay();
+  const daysInMonth = new Date(curYear, curMonth+1, 0).getDate();
+  const todayDate = today.getDate();
+  const todayMonth = today.getMonth();
+  const todayYear = today.getFullYear();
+
+  for (let i=0; i<firstDay; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty'; grid.appendChild(el);
+  }
+  for (let d=1; d<=daysInMonth; d++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day';
+    el.textContent = d;
+    const isPast = (curYear < todayYear) || (curYear === todayYear && curMonth < todayMonth) || (curYear === todayYear && curMonth === todayMonth && d < todayDate);
+    if (isPast) { el.classList.add('past'); }
+    else {
+      if (curYear === todayYear && curMonth === todayMonth && d === todayDate) el.classList.add('today');
+      if (selectedDay && selectedDay.d === d && selectedDay.m === curMonth && selectedDay.y === curYear) el.classList.add('selected');
+      el.addEventListener('click', () => selectDay(d));
+    }
+    grid.appendChild(el);
+  }
+}
+
+function selectDay(d) {
+  selectedDay = { d, m: curMonth, y: curYear };
+  const dateStr = months[curMonth] + ' ' + d + ', ' + curYear;
+  document.getElementById('selectedDate').value = dateStr;
+  document.getElementById('selectedDateText').textContent = dateStr;
+  document.getElementById('selectedDateDisplay').style.display = 'block';
+  buildCalendar();
+}
+
+document.getElementById('prevMonth').addEventListener('click', () => {
+  curMonth--; if (curMonth < 0) { curMonth = 11; curYear--; } buildCalendar();
+});
+document.getElementById('nextMonth').addEventListener('click', () => {
+  curMonth++; if (curMonth > 11) { curMonth = 0; curYear++; } buildCalendar();
+});
+
+buildCalendar();
+
+// ── FORM SUBMIT ──
+function submitQuote() {
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const address = document.getElementById('address').value.trim();
+  const junkType = document.getElementById('junkType').value;
+  const date = document.getElementById('selectedDate').value;
+  const message = document.getElementById('message').value.trim();
+
+  if (!firstName || !lastName || !phone || !address) {
+    alert('Please fill in your name, phone, and service address.');
+    return;
+  }
+
+  const subject = encodeURIComponent('New Quote Request – K&M Junk Removal');
+  const body = encodeURIComponent(
+    'NEW QUOTE REQUEST\n' +
+    '================\n\n' +
+    'Name: ' + firstName + ' ' + lastName + '\n' +
+    'Phone: ' + phone + '\n' +
+    'Email: ' + (email || 'Not provided') + '\n' +
+    'Address: ' + address + '\n' +
+    'Type of Junk: ' + (junkType || 'Not specified') + '\n' +
+    'Preferred Date: ' + (date || 'Not selected') + '\n\n' +
+    'Message:\n' + (message || 'None') + '\n\n' +
+    '--- Sent from K&M Junk Removal website ---'
+  );
+
+  window.location.href = 'mailto:KMjunkkkremoval@gmail.com?subject=' + subject + '&body=' + body;
+
+  document.getElementById('quoteForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+
+// Smooth nav scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
